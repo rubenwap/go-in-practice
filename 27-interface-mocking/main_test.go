@@ -1,4 +1,4 @@
-package msg
+package main
 
 import (
 	"testing"
@@ -19,9 +19,10 @@ func (m *MockMessage) Send(email, subject string, body []byte) error {
 func TestAlert(t *testing.T) {
 	msgr := new(MockMessage)
 	body := []byte("Critical Error")
-
+	
+	
 	Alert(msgr, body)
-
+	
 	if msgr.subject != "Critical Error" {
 		t.Errorf("Expected Critical Error, Got '%s'", msgr.subject)
 	}
